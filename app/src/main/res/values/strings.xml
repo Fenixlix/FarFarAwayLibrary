@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FarFarAwayLibrary</string>
+    <string name="fab_content_description">Open a search message to search for an Star Wars Character</string>
+</resources>
