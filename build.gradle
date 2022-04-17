@@ -3,6 +3,14 @@ plugins {
     id 'com.android.application' version '7.1.3' apply false
     id 'com.android.library' version '7.1.3' apply false
     id 'org.jetbrains.kotlin.android' version '1.6.20' apply false
+    id 'com.google.dagger.hilt.android' version '2.41' apply false
+}
+
+ext {
+    daggerhilt_version = "2.41"
+    retrofit2_version = "2.9.0"
+    lifecycle_version = '2.4.1'
+    coroutines_version = '1.5.2'
 }
 
 task clean(type: Delete) {

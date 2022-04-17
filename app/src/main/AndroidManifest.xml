@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FarFarAwayLibrary">
         <activity
-            android:name=".CloseLook"
+            android:name=".view.CloseLook"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"
