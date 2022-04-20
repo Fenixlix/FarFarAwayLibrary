@@ -18,10 +18,10 @@
         android:background="#00FFFFFF"
         tools:text="R2-D2"
         android:textColor="@color/yellow"
-        app:layout_constraintEnd_toStartOf="@+id/rv_characterHomePlanet"
+        app:layout_constraintEnd_toStartOf="@+id/rv_characterBirthDay"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/rv_characterNumber"
-        app:layout_constraintTop_toTopOf="@+id/rv_characterHomePlanet" />
+        app:layout_constraintTop_toTopOf="@+id/rv_characterBirthDay" />
 
     <TextView
         android:id="@+id/rv_characterNumber"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="@+id/rv_characterName" />
 
     <TextView
-        android:id="@+id/rv_characterHomePlanet"
+        android:id="@+id/rv_characterBirthDay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
