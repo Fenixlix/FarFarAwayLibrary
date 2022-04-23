@@ -31,8 +31,6 @@ class SwCharacterViewModel @Inject constructor(
     var allCharacters = MutableLiveData<List<SwSimpleCharacter>>()
     var oneCharacter = MutableLiveData<SwCompleteCharacter>()
 
-    // todo: add the safe boundaries for an empty list of characters
-
     fun getCharacterFromApi(name: String) {
         viewModelScope.launch {
             progressBarEstate.postValue(true)
@@ -40,7 +38,11 @@ class SwCharacterViewModel @Inject constructor(
             if (response.isSuccessful) {
                 val character = response.body()?.results
                 _allCharacters.value = character!!
-                oneCharacter.postValue(_allCharacters.value?.component1())
+                if (_allCharacters.value!!.isNotEmpty()){
+                    oneCharacter.postValue(_allCharacters.value?.component1())
+                }else {
+                    oneCharacter.postValue(SwCompleteCharacter(name = "No found: $name"))
+                }
             }
             progressBarEstate.postValue(false)
         }

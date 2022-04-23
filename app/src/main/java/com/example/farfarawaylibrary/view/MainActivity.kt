@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() , RvItemClick {
         }
     }
 
-
     override fun onItemClick(name: String) {
         val intent = Intent(this, CloseLook::class.java)
         intent.putExtra("name",name)
