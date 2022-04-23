@@ -15,21 +15,16 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
+        android:contentDescription="@string/fab_content_description"
+        android:focusable="true"
         android:src="@android:drawable/ic_menu_search"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/fab_content_description"
-        android:focusable="true" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_margin="8dp"
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,14 +34,137 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:paddingLeft="16dp"
+            android:paddingStart="16dp">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/closeLook_tv_ccName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:textColor="@color/yellow"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="Leia Organa"
+                android:layout_marginBottom="8dp"
+                android:layout_margin="4dp"/>
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Height: 150" />
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccMass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Mass: 49" />
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccHairColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Hair color: brown" />
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccSkinColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Skin color: light" />
+
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccEyeColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Eye color: brown" />
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccBirthYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Birth_year: 19BBY" />
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Gender: female" />
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccHomeWorld"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Home world: url"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/closeLook_tv_Films"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Films: \n...\n...\n..."
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccSpecies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Species \n...\n...\n..."
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccVehicles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Vehicles \n...\n...\n..."
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/closeLook_tv_ccStarships"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/yellow"
+                android:textSize="18sp"
+                tools:text="Starships \n...\n...\n..."
+                android:layout_marginBottom="8dp"/>
+
         </LinearLayout>
+
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/closeLook_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

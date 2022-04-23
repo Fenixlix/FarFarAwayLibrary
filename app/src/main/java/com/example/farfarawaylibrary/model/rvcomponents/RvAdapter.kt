@@ -5,10 +5,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.farfarawaylibrary.model.models.SwSimpleCharacter
 
-class RvAdapter : ListAdapter<SwSimpleCharacter,RvHolder>(SwComparator()) {
+class RvAdapter(itemClick: RvItemClick) : ListAdapter<SwSimpleCharacter,RvHolder>(SwComparator()) {
+
+    private val _itemClick = itemClick
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvHolder {
-        return RvHolder.create(parent)
+        return RvHolder.create(parent, _itemClick)
     }
 
     override fun onBindViewHolder(holder: RvHolder, position: Int) {

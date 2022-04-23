@@ -1,16 +1,14 @@
 package com.example.farfarawaylibrary.model.netcomponents
 
-import com.example.farfarawaylibrary.model.models.SwApiResponse
-import com.example.farfarawaylibrary.model.models.SwCompleteCharacter
+import com.example.farfarawaylibrary.model.models.SwPeopleApiResponse
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface SWApiClient {
-    @GET("people/.json")
-    suspend fun getAllCharacters(@Query("page") page : Int) : Response<SwApiResponse>
+    @GET("people/")
+    suspend fun getAllCharacters(@Query("page") page : Int) : Response<SwPeopleApiResponse>
 
-    //@GET("people/?search={character}")
-    //suspend fun getCharacter(@Path("character") character : String) : Response<SwCompleteCharacter>
+    @GET("people/")
+    suspend fun getCharacter(@Query("search") search : String) : Response<SwPeopleApiResponse>
 }

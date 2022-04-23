@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ad_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#00ffffff">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="320dp"
+        android:layout_height="170dp"
+        android:src="@drawable/alert_dialog_layout_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+    <TextView
+        android:id="@+id/alertDialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center"
+        android:text="@string/search_alert_dialog_title"
+        android:textColor="@color/yellow"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ad_et_characterName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_margin="4dp"
+        android:gravity="fill_horizontal"
+        android:hint="@string/ad_hint_name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/yellow"
+        android:textColorHint="@color/yellow"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alertDialogTitle" />
+
+    <Button
+        android:id="@+id/ad_btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/ad_btn_ok"
+        android:textColor="@color/yellow"
+        app:backgroundTint="@color/black"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ad_et_characterName"
+        app:strokeColor="@color/dark_yellow"
+        app:strokeWidth="4dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

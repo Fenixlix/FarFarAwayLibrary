@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">FarFarAwayLibrary</string>
     <string name="fab_content_description">Open a search message to search for an Star Wars Character</string>
+
+    <string name="search_alert_dialog_title">Write a character name</string>
+
+    <string name="tv_lists">&lt;big>&lt;b>%1$s:&lt;/b>&lt;/big> &lt;i>%2$s&lt;/i></string>
+    <string name="height">&lt;b>Height:&lt;/b> &lt;i>%1$s&lt;/i></string>
+    <string name="mass">&lt;b>Mass:&lt;/b> &lt;i>%1$s&lt;/i></string>
+    <string name="hair_color">&lt;b>Hair color:&lt;/b> &lt;i>%1$s&lt;/i>&lt;/i></string>
+    <string name="skin_color">&lt;b>Skin color:&lt;/b> &lt;i>%1$s&lt;/i></string>
+    <string name="eye_color">&lt;b>Eye color:&lt;/b> &lt;i>%1$s&lt;/i></string>
+    <string name="birth_year">&lt;b>Birth year:&lt;/b> &lt;i>%1$s&lt;/i></string>
+    <string name="gender">&lt;b>Gender:&lt;/b> &lt;i>%1$s&lt;/i></string>
+    <string name="home_world">&lt;b>Home world:&lt;/b> &lt;i>%1$s&lt;/i></string>
+    <string name="ad_hint_name">Example: R2-D2</string>
+    <string name="ad_btn_ok">Search</string>
 </resources>

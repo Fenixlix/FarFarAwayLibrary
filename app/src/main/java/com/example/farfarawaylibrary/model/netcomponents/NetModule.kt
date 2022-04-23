@@ -1,6 +1,5 @@
 package com.example.farfarawaylibrary.model.netcomponents
 
-import com.example.farfarawaylibrary.model.models.SwCompleteCharacter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
