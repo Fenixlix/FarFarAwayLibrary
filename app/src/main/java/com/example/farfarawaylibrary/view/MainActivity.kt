@@ -1,15 +1,9 @@
 package com.example.farfarawaylibrary.view
 
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.farfarawaylibrary.R
@@ -43,6 +37,7 @@ class MainActivity : AppCompatActivity() , RvItemClick {
             rvAdapter.submitList(swCharacterViewModel.allCharacters.value)
         }
 
+        // Use the view model to invoke an alert dialog and then move to other activity to show the data
         binding.mainFabSearch.setOnClickListener {
             swCharacterViewModel.searchDialog(this, findViewById(R.id.ad_container)) {
                 onItemClick(it)

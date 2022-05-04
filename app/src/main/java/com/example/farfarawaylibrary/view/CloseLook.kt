@@ -2,7 +2,6 @@ package com.example.farfarawaylibrary.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
@@ -20,11 +19,6 @@ class CloseLook : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCloseLookBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // todo: hacer un rv para usar la respuesta multiple de
-        //  busqueda y mostrar varios personajes en el closeLook y la logica para estos
-        //  quiza hacer un fragment que se generen varios o algo asi ?
-        //  o los recycler view con esta estructura
 
         swCharacterViewModel.progressBarEstate.observe(this){
             binding.closeLookProgressBar.isVisible = it
@@ -44,7 +38,6 @@ class CloseLook : AppCompatActivity() {
             binding.closeLookTvCcEyeColor.text = HtmlCompat.fromHtml(getString(R.string.eye_color,it.eye_color),HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.closeLookTvCcBirthYear.text = HtmlCompat.fromHtml(getString(R.string.birth_year,it.birth_year),HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.closeLookTvCcGender.text = HtmlCompat.fromHtml(getString(R.string.gender,it.gender),HtmlCompat.FROM_HTML_MODE_LEGACY)
-            // todo: make function for extract the homeworld name and the data for the others links
             binding.closeLookTvCcHomeWorld.text = HtmlCompat.fromHtml(getString(R.string.home_world,it.homeworld),HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.closeLookTvFilms.text =  HtmlCompat.fromHtml(textViewListMaker("Films",it.films),HtmlCompat.FROM_HTML_MODE_LEGACY)
             binding.closeLookTvCcSpecies.text =  HtmlCompat.fromHtml(textViewListMaker("Species",it.species),HtmlCompat.FROM_HTML_MODE_LEGACY)
@@ -52,6 +45,7 @@ class CloseLook : AppCompatActivity() {
             binding.closeLookTvCcStarships.text =  HtmlCompat.fromHtml(textViewListMaker("Starships",it.starships),HtmlCompat.FROM_HTML_MODE_LEGACY)
         }
 
+        // Use the view model to invoke an alert dialog and then look for the character and refresh the screen
         binding.closeLookFabSearch.setOnClickListener {
             swCharacterViewModel.searchDialog(this, findViewById(R.id.ad_container)){
                 swCharacterViewModel.getCharacterFromApi(it)
@@ -60,12 +54,10 @@ class CloseLook : AppCompatActivity() {
 
     }
 
+    // This function creates a list of the different items that are given to it
     private fun textViewListMaker( title : String, list: List<String>?) : String{
-        // <big><b>Films:</b></big> <i>\n \t\t-Movie 1\n \t\t-Movie 2</i>...
-        // &lt;big>&lt;b>Films:&lt;/b>&lt;/big> &lt;i>&lt;br>\t\t-Movie 1;br>\t\t-Movie2&lt;/i>...
-        // todo: solve the \n problem , so that it represents a list, maybe just separate in two textview
         var combinedList = " "
-        list?.forEach { combinedList += "\n   -$it " }
+        list?.forEach { combinedList += getString(R.string.enter,it) }
         return getString(R.string.tv_lists,title,combinedList)
     }
 }

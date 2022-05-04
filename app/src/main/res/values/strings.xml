@@ -15,4 +15,5 @@
     <string name="home_world">&lt;b>Home world:&lt;/b> &lt;i>%1$s&lt;/i></string>
     <string name="ad_hint_name">Example: R2-D2</string>
     <string name="ad_btn_ok">Search</string>
+    <string name="enter"> &lt;br> -> %1$s </string>
 </resources>
