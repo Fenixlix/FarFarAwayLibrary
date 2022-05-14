@@ -7,7 +7,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface SWApiClient {
-    @GET("people/")
+    @GET("people/.json")
     suspend fun getAllCharacters(@Query("page") page : Int) : Response<SwPeopleApiResponse>
 
     @GET("people/")

@@ -32,7 +32,7 @@ class SwCharacterViewModel @Inject constructor(
 
     val progressBarEstate = MutableLiveData<Boolean>()
 
-    // get a list of characters thar mach with the given name, and then take the first
+    // Get a list of characters thar mach with the given name, and then take the first
     fun getCharacterFromApi(name: String) {
         viewModelScope.launch {
             progressBarEstate.value = true
@@ -46,7 +46,7 @@ class SwCharacterViewModel @Inject constructor(
     private suspend fun cleanData(character : SwCompleteCharacter) : SwCompleteCharacter{
         val planetId = getId(character.homeworld)
         val planetName = viewModelScope.async {
-            repo.getPlanetName(planetId)
+            if (planetId != null)repo.getPlanetName(planetId) else ""
         }
 
         val filmsId = getListOfId(character.films)
@@ -85,9 +85,13 @@ class SwCharacterViewModel @Inject constructor(
     }
 
     // Utility function to get the Id of a given url string
-    private fun getId(urls : String) : Int {
-        val segmentedUrl = urls.split("/")
-        return segmentedUrl[segmentedUrl.size-2].toInt()
+    private fun getId(urls : String) : Int? {
+        return if (urls.isNotEmpty()){
+            val segmentedUrl = urls.split("/")
+            segmentedUrl[segmentedUrl.size-2].toInt()
+        } else {
+            null
+        }
     }
 
     // Utility function to get the Id of a given list of url string
