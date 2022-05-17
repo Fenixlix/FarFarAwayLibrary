@@ -21,7 +21,7 @@ class RvHolder (itemView : View, private val itemClick: RvItemClick) : RecyclerV
             birthDay.text = swCharacter.birth_year
 
             itemView.setOnClickListener{
-                if (adapterPosition != ListView.INVALID_POSITION){
+                if (absoluteAdapterPosition != ListView.INVALID_POSITION){
                     itemClick.onItemClick(name.text.toString())
                 }
             }

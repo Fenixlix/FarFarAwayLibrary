@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.farfarawaylibrary.R
 import com.example.farfarawaylibrary.databinding.ActivityMainBinding
-import com.example.farfarawaylibrary.model.rvcomponents.RvAdapter
+import com.example.farfarawaylibrary.model.rvcomponents.CharacterPagingDataAdapter
 import com.example.farfarawaylibrary.model.rvcomponents.RvItemClick
 import com.example.farfarawaylibrary.viewmodel.SwCharacterViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,13 +28,12 @@ class MainActivity : AppCompatActivity() , RvItemClick {
             binding.mainProgressBar.isVisible = it
         }
 
-        val rvAdapter = RvAdapter(this)
-        binding.mainRvCharacters.adapter = rvAdapter
+        val pagerAdapter = CharacterPagingDataAdapter(this)
+        binding.mainRvCharacters.adapter = pagerAdapter
         binding.mainRvCharacters.layoutManager = LinearLayoutManager(this)
 
-        swCharacterViewModel.onCreate()
         swCharacterViewModel.allCharacters.observe(this){
-            rvAdapter.submitList(swCharacterViewModel.allCharacters.value)
+            pagerAdapter.submitData(this.lifecycle,it)
         }
 
         // Use the view model to invoke an alert dialog and then move to other activity to show the data

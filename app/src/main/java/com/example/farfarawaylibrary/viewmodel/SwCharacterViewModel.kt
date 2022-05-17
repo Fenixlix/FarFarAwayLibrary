@@ -8,13 +8,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.example.farfarawaylibrary.R
 import com.example.farfarawaylibrary.model.SwRepository
 import com.example.farfarawaylibrary.model.models.SwCompleteCharacter
-import com.example.farfarawaylibrary.model.models.SwSimpleCharacter
+import com.example.farfarawaylibrary.model.rvcomponents.CharactersDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -22,22 +27,23 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SwCharacterViewModel @Inject constructor(
-    private val repo : SwRepository
+    val repo : SwRepository
 ) : ViewModel() {
 
-    private val _allCharacters = MutableLiveData<List<SwCompleteCharacter>>()
-
-    val allCharacters = MutableLiveData<List<SwSimpleCharacter>>()
-    val oneCharacter = MutableLiveData<SwCompleteCharacter>()
-
     val progressBarEstate = MutableLiveData<Boolean>()
+
+    private var _allCharacters = Pager(config = PagingConfig(20, 20, true,
+            20), pagingSourceFactory = { CharactersDataSource(this) }).liveData
+
+    val allCharacters = _allCharacters
+    val oneCharacter = MutableLiveData<SwCompleteCharacter>()
 
     // Get a list of characters thar mach with the given name, and then take the first
     fun getCharacterFromApi(name: String) {
         viewModelScope.launch {
             progressBarEstate.value = true
-            _allCharacters.value = repo.getCharacterFromApi(name)
-            oneCharacter.postValue(cleanData(_allCharacters.value!!.component1()))
+            val charList = repo.getCharacterFromApi(name)
+            oneCharacter.postValue(cleanData(charList.component1()))
             progressBarEstate.postValue(false)
         }
     }
@@ -110,26 +116,6 @@ class SwCharacterViewModel @Inject constructor(
             idList
         } else {
            arrayListOf()
-        }
-    }
-
-    // Simplify the data of the swapi
-    private fun simpleCharacterList(list : List<SwCompleteCharacter>) {
-        var x = 1
-        val allC = list.map {
-                SwSimpleCharacter(id = x++, name = it.name, birth_year = it.birth_year)
-            }
-        allCharacters.value = allC
-    }
-
-    // todo: add pagination so that this works in a better way
-    // populate the main activity recycler view with the data of the different characters
-    fun onCreate() {
-        viewModelScope.launch {
-            progressBarEstate.postValue(true)
-            _allCharacters.value = repo.getCharacterByPage(1)
-            progressBarEstate.postValue(false)
-            simpleCharacterList(_allCharacters.value!!)
         }
     }
 

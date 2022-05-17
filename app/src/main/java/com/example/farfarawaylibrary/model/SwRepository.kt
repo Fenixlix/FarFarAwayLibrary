@@ -1,6 +1,7 @@
 package com.example.farfarawaylibrary.model
 
 import com.example.farfarawaylibrary.model.models.SwCompleteCharacter
+import com.example.farfarawaylibrary.model.models.SwPeopleApiResponse
 import com.example.farfarawaylibrary.model.netcomponents.SWApiClient
 import com.example.farfarawaylibrary.model.netcomponents.SafeCallResponse
 import retrofit2.Response
@@ -15,14 +16,14 @@ class SwRepository @Inject constructor(
         return if (response.callSuccessful) {
             val character = response.body.results
             character.ifEmpty {
-                listOf(SwCompleteCharacter(name = "No found: $name"))
+                listOf(SwCompleteCharacter(name = "Not found: $name"))
             }
         } else{
             listOf(SwCompleteCharacter(name = response.error.toString()))
         }
     }
 
-    // Get all the characters by page
+    /*/ Get all the characters by page
     suspend fun getCharacterByPage(page : Int) : List<SwCompleteCharacter>{
         val completeList: ArrayList<SwCompleteCharacter> = arrayListOf()
         val response = safeApiCall { SWApi.getAllCharacters(page) }
@@ -30,6 +31,11 @@ class SwRepository @Inject constructor(
             completeList.addAll(response.body.results)
         }
         return completeList
+    }*/
+
+    // Get all the characters by page
+    suspend fun getCharacterByPage(page : Int) : Response<SwPeopleApiResponse>{
+        return SWApi.getAllCharacters(page)
     }
 
     // Get the planet name searched by Id
